@@ -1,4 +1,4 @@
-# toy-rag
+# answer-me-tolkien
 
 This is a simple RAG application built using langchain and chroma database.
 
