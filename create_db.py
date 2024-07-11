@@ -22,7 +22,6 @@ def save_to_database(chunks):
 
     # create the embedding function
     embedding_function = CohereEmbeddings(model="embed-english-light-v3.0")
-    print("save to chroma")
 
     # load it into chroma
     db = Chroma.from_documents(chunks, embedding_function, persist_directory=DB_PATH)

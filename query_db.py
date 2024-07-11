@@ -8,14 +8,14 @@ from langchain_core.prompts import PromptTemplate
 
 load_dotenv()
 
-PROMPT_TEMPLATE = """
-Answer the question based on the following context:
-
+PROMPT_TEMPLATE = f"""
+Context information is below.
+---------------------
 {context}
-
----
-
-Here's the question: {query}
+---------------------
+Given the context information and not prior knowledge, answer the query.
+Query: {query}
+Answer:
 """
 
 def main():
@@ -36,7 +36,7 @@ def main():
     db = Chroma(persist_directory="chroma", embedding_function=embedding_function)
 
     # search the db
-    results = db.similarity_search_with_relevance_scores(query, k=3)
+    results = db.similarity_search_with_score(query, k=3)
 
     if len(results) == 0 or results[0][1] < 0.10:
         print("No matching documents found.")
