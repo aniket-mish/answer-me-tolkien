@@ -6,11 +6,21 @@ This is a simple RAG application built using langchain and chroma database.
 
 2. Create a database
 
-`python create_db.py`
+```bash
+python create_db.py
+```
+
+3. Or update the database
+
+```bash
+python update_db.py
+```
 
 4. Query the llm with context from the vector db
 
-`python query_db.py "what happened to gandalf that turned him white?"`
+```python
+python query_db.py "what happened to gandalf that turned him white?"
+```
 
 I have used cohere's embedding and the chat models.
 
