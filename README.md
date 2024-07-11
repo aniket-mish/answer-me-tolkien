@@ -24,6 +24,9 @@ python query_db.py "what happened to gandalf that turned him white?"
 
 I have used cohere's embedding and the chat models.
 
+> [!NOTE]
+> If you want to run models locally, use Ollama
+
 I have used lotr books as the source data.
 
 ![output](assets/output.png)
