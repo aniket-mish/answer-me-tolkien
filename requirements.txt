@@ -3,3 +3,5 @@ langchain_chroma
 langchain_community
 langchain_cohere
 unstructured
+fastapi
+magnum

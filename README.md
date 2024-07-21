@@ -35,10 +35,18 @@ I have used lotr books as the source data.
 
 ## Output I'm getting
 
+
 ![output](assets/output.png)
+
 
 ---
 
 Let's now extend this project to include a backend, frontend and deploy it to the cloud so that everyone can use the app.
+
+
+![architecture](assets/architecture.png)
+
+
+
 
 
