@@ -2,32 +2,15 @@ import os
 import argparse
 from dotenv import load_dotenv
 from langchain_chroma import Chroma
-from langchain_cohere import ChatCohere
-from langchain_cohere import CohereEmbeddings
+from langchain_cohere import ChatCohere, CohereEmbeddings
 from langchain_core.prompts import PromptTemplate
 
 load_dotenv()
 
-PROMPT_TEMPLATE = f"""
-Context information is below.
----------------------
-{context}
----------------------
-Given the context information and not prior knowledge, answer the query.
-Query: {query}
-Answer:
-"""
-
-def main():
+def query_app(query):
     """
     query the db
     """
-
-    # create a CLI
-    parser = argparse.ArgumentParser()
-    parser.add_argument("query", type=str)
-    args = parser.parse_args()
-    query = args.query
 
     # create the open-source embedding function
     embedding_function = CohereEmbeddings(model="embed-english-light-v3.0")
@@ -42,6 +25,16 @@ def main():
         print("No matching documents found.")
 
     context = "\n\n----\n\n".join([doc.page_content for doc, score in results])
+
+    PROMPT_TEMPLATE = f"""
+    Context information is below.
+    ---------------------
+    {context}
+    ---------------------
+    Given the context information and not prior knowledge, answer the query.
+    Query: {query}
+    Answer:
+    """
     
     # add context and query to the prompt
     prompt_template = PromptTemplate.from_template(PROMPT_TEMPLATE)
@@ -53,5 +46,14 @@ def main():
     response = cohere_chat_model.invoke(prompt)
     print(f"Response: \n {response.content}")
 
+    return response.content
+
 if __name__ == "__main__":
-    main()
+
+    # create a CLI
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("query", type=str)
+    # args = parser.parse_args()
+    # query = args.query
+
+    query_app(query)
