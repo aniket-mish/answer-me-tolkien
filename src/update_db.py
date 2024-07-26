@@ -1,8 +1,13 @@
 import os
+from dotenv import load_dotenv
 from langchain_chroma import Chroma
+from langchain_cohere import CohereEmbeddings
+from src.preprocess import load_docs, split_docs
+
+load_dotenv()
 
 DB_PATH = "chroma"
-DATA_PATH = "data"
+DATA_PATH = "new_data"
 
 # saves as a sqlite3 file
 def update_the_database(chunks):

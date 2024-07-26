@@ -1,11 +1,12 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from mangum import Mangum
 
 from src.query_db import query_app
 
 
 app = FastAPI()
-handler = Magnum(app)
+handler = Mangum(app)
 
 
 class QueryRequest(BaseModel):

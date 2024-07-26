@@ -23,4 +23,9 @@ def split_docs(documents):
         add_start_index = True
     )
     chunks = text_splitter.split_documents(documents)
+
+    for chunk in chunks:
+        chunk_id = chunk.metadata["start_index"]
+        chunk.metadata["id"] = f"{chunk.metadata['source']}_{chunk_id}"
+
     return chunks

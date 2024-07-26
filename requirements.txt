@@ -1,7 +1,7 @@
 langchain 
-langchain_chroma
-langchain_community
-langchain_cohere
+langchain-chroma
+langchain-community
+langchain-cohere
 unstructured
 fastapi
-magnum
+mangum

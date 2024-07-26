@@ -1,9 +1,9 @@
 import os
 import argparse
 from dotenv import load_dotenv
-from langchain_chroma import Chroma
 from langchain_cohere import ChatCohere, CohereEmbeddings
 from langchain_core.prompts import PromptTemplate
+from src.create_db import save_to_chroma_db
 
 load_dotenv()
 
@@ -11,12 +11,10 @@ def query_app(query):
     """
     query the db
     """
+    db = save_to_chroma_db()
 
     # create the open-source embedding function
     embedding_function = CohereEmbeddings(model="embed-english-light-v3.0")
-
-    # prepare the db
-    db = Chroma(persist_directory="chroma", embedding_function=embedding_function)
 
     # search the db
     results = db.similarity_search_with_score(query, k=3)
@@ -51,9 +49,9 @@ def query_app(query):
 if __name__ == "__main__":
 
     # create a CLI
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("query", type=str)
-    # args = parser.parse_args()
-    # query = args.query
+    parser = argparse.ArgumentParser()
+    parser.add_argument("query", type=str)
+    args = parser.parse_args()
+    query = args.query
 
-    query_app(query)
+    res = query_app(query)
