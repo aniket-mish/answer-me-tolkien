@@ -45,8 +45,3 @@ Let's now extend this project to include a backend, frontend and deploy it to th
 
 
 ![architecture](assets/architecture.png)
-
-
-
-
-
