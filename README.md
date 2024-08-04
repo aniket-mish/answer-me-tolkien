@@ -9,19 +9,19 @@ This is a simple RAG application built using langchain and chroma database.
 2. Create a database
 
 ```bash
-python -m src.create_db
+python -m rag_app_image.src.create_db
 ```
 
 3. Or update the database
 
 ```bash
-python -m src.update_db
+python -m rag_app_image.src.update_db
 ```
 
 4. Query the llm with context from the vector db
 
 ```bash
-python -m src.query_db "what happened to gandalf that turned him white?"
+python -m rag_app_image.src.query_db "what happened to gandalf that turned him white?"
 ```
 
 I have used cohere's embedding and the chat models.
@@ -36,7 +36,7 @@ I have used lotr books as the source data.
 ## Output I'm getting
 
 
-![output](assets/output.png)
+![output](rag_app_image/assets/output.png)
 
 
 ---
@@ -44,4 +44,4 @@ I have used lotr books as the source data.
 Let's now extend this project to include a backend, frontend and deploy it to the cloud so that everyone can use the app.
 
 
-![architecture](assets/architecture.png)
+![architecture](rag_app_image/assets/architecture.png)
