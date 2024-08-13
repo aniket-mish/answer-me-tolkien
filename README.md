@@ -56,7 +56,7 @@ Get the python base image from aws lambda.
 
 We've also added an environment variable that checks if we're running the image on local. If yes, then we don't need pysqlite to be installed.
 
-```docker
+```dockerfile
 # https://hub.docker.com/r/amazon/aws-lambda-python 
 FROM public.ecr.aws/lambda/python:3.10
 
