@@ -51,12 +51,13 @@ Let's now extend this project to include a backend, frontend and deploy it to th
 
 Get the python base image from aws lambda.
 
-> [!WARNING]
+> [!NOTE]
 > Need to install pysqlite for chroma db to work correctly
 
 We've also added an environment variable that checks if we're running the image on local. If yes, then we don't need pysqlite to be installed.
 
 ```dockerfile
+
 # https://hub.docker.com/r/amazon/aws-lambda-python 
 FROM public.ecr.aws/lambda/python:3.10
 
@@ -83,6 +84,7 @@ COPY src/* ${LAMBDA_TASK_ROOT}/src
 COPY chroma ${LAMBDA_TASK_ROOT}/chroma
 COPY data ${LAMBDA_TASK_ROOT}/data
 COPY api_handler.py ${LAMBDA_TASK_ROOT}
+
 ```
 
 ### Provision resources using AWS CDK
