@@ -1,0 +1,7 @@
+langchain 
+langchain-chroma
+langchain-community
+langchain-cohere
+unstructured
+fastapi
+mangum
