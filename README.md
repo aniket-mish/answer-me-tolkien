@@ -41,7 +41,27 @@ I have used lotr books as the source data.
 
 ---
 
+## Create a backend using Lambda on AWS
+
 Let's now extend this project to include a backend, frontend and deploy it to the cloud so that everyone can use the app.
 
-
 ![architecture](rag_app_image/assets/architecture.png)
+
+### Dockerize the app
+
+### Provision resources using AWS CDK
+
+API Gateway has a time-limit of 30 seconds
+Lambda functions have a 15 minute time-limit
+
+### Dynamo DB for storing query-response
+
+### Aysnc API for low latency
+
+## Add a frontend
+
+### API
+
+### Render components
+
+### Create an interface
