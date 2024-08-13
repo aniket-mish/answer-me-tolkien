@@ -49,6 +49,42 @@ Let's now extend this project to include a backend, frontend and deploy it to th
 
 ### Dockerize the app
 
+Get the python base image from aws lambda.
+
+> [!WARNING]
+> Need to install pysqlite for chroma db to work correctly
+
+We've also added an environment variable that checks if we're running the image on local. If yes, then we don't need pysqlite to be installed.
+
+```docker
+# https://hub.docker.com/r/amazon/aws-lambda-python 
+FROM public.ecr.aws/lambda/python:3.10
+
+# Copy requirements.txt
+COPY requirements.txt ${LAMBDA_TASK_ROOT}
+
+# Install the necessary build tools
+RUN yum update -y && yum install -y gcc
+
+# Required to install chromadb https://docs.trychroma.com/troubleshooting
+RUN pip install pysqlite3-binary
+
+# Install the packages
+RUN pip install -r requirements.txt --upgrade
+
+# Local test
+EXPOSE 8000
+
+# Enviornment variable to check if we're running a container
+ENV IS_CONTAINER_RUNTIME=True
+
+# Copy all required files
+COPY src/* ${LAMBDA_TASK_ROOT}/src
+COPY chroma ${LAMBDA_TASK_ROOT}/chroma
+COPY data ${LAMBDA_TASK_ROOT}/data
+COPY api_handler.py ${LAMBDA_TASK_ROOT}
+```
+
 ### Provision resources using AWS CDK
 
 API Gateway has a time-limit of 30 seconds
