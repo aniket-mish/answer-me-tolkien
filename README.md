@@ -36,7 +36,7 @@ I have used lotr books as the source data.
 ## Output I'm getting
 
 
-![output](rag_app_image/assets/output.png)
+![output](app/assets/output.png)
 
 
 ---
@@ -45,7 +45,7 @@ I have used lotr books as the source data.
 
 Let's now extend this project to include a backend, frontend and deploy it to the cloud so that everyone can use the app.
 
-![architecture](rag_app_image/assets/architecture.png)
+![architecture](app/assets/architecture.png)
 
 ### Dockerize the app
 
