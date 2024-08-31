@@ -49,12 +49,14 @@ Let's now extend this project to include a backend, frontend and deploy it to th
 
 ### Dockerize the app
 
-Get the python base image from aws lambda.
+We're going to use container images to deploy our code on Lambda and so we need to use AWS base image.
 
 > [!NOTE]
 > Need to install pysqlite for chroma db to work correctly
 
 We've also added an environment variable that checks if we're running the image on local. If yes, then we don't need pysqlite to be installed.
+
+You can look into the [dockerfile](app/Dockerfile).
 
 ### Provision resources using AWS CDK
 
