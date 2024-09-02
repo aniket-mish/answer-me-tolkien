@@ -1,6 +1,6 @@
 # answer-me-tolkien
 
-This is a simple RAG application built using langchain and chroma database.
+This is a simple RAG-based application built using langchain and chroma database.
 
 ## How to use
 
@@ -31,7 +31,7 @@ I have used cohere's embedding and the chat models.
 
 ## Data I've used
 
-I have used lotr books as the source data.
+I have used lotr material as the source data.
 
 ## Output I'm getting
 
@@ -41,36 +41,51 @@ I have used lotr books as the source data.
 
 ---
 
-## Create a backend using Lambda on AWS
+## Create a backend using AWS Lambda
 
-Let's now extend this project to include a backend, frontend and deploy it to the cloud so that everyone can use the app.
+Let's now extend the project to include a serverless backend and a fastHTML frontend.
 
 ![architecture](app/assets/architecture.png)
 
 ### Dockerize the app
 
-We're going to use container images to deploy our code on Lambda and so we need to use AWS base image.
+I'm using an container image to deploy the code on AWS Lambda.
 
-> [!NOTE]
+Remember to use Lambda supported base image.
+
+> [!WARNING]
 > Need to install pysqlite for chroma db to work correctly
 
-We've also added an environment variable that checks if we're running the image on local. If yes, then we don't need pysqlite to be installed.
-
-You can look into the [dockerfile](app/Dockerfile).
+See the [dockerfile](app/Dockerfile) for more details.
 
 ### Provision resources using AWS CDK
 
-API Gateway has a time-limit of 30 seconds
-Lambda functions have a 15 minute time-limit
+> [!NOTE]
+> API Gateway has a time-limit of 30 seconds
+> Lambda functions have a 15 minute time-limit
 
-### Dynamo DB for storing query-response
+Install CDK and setup a project. You can specify the programming language as well. I prefer python but a lot of people like to typescript to write CDK templates.
 
-### Aysnc API for low latency
+```bash
+cdk init app --language python
+```
 
-## Add a frontend
+AWS recommends to run [bootstrap](https://docs.aws.amazon.com/cdk/v2/guide/bootstrapping.html) before deploying the stack. It prepares the environment.
 
-### API
+```bash
+cdk bootstrap
+```
 
-### Render components
+To deploy the stack on AWS
 
-### Create an interface
+```bash
+cdk deploy
+```
+
+> [!WARNING]
+> Delete the stack created once you're done experimenting
+
+```bash
+cdk destroy
+```
+

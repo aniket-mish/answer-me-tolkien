@@ -39,7 +39,3 @@ def save_to_chroma_db():
     print(f"{len(chunks)} chunks are now stored in chroma at {DB_PATH}.")
 
     return db
-
-
-if __name__ == "__main__":
-    db = save_to_chroma_db()
